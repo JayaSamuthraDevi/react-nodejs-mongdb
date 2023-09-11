@@ -1,11 +1,12 @@
 # react-nodejs-mongodb
 
 **SetUp**
+<br>
 Front-End App
--1:npx create-react-app project-name
--2:cd project_folder
--3:npm install
--4:npm start
+- 1:npx create-react-app project-name
+- 2:cd project_folder
+- 3:npm install
+- 4:npm start
 
 
 
