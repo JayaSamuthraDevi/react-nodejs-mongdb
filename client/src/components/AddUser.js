@@ -1,5 +1,5 @@
 import logo from "../images/divumlogo.png";
-import { useState } from "react";
+import React,{ useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import formValidate from "../ValidateForm";
 import setError from "./setError";

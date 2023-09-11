@@ -1,5 +1,5 @@
 import logo from "../images/divumlogo.png";
-import { useState,useEffect } from "react";
+import React,{ useState,useEffect } from "react";
 import { Link, useParams ,useNavigate} from "react-router-dom";
 import axios from "axios";
 import formValidate from "../ValidateForm";

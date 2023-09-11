@@ -1,4 +1,5 @@
-
+import React from 'react';
+import ReactDOM from 'react-dom'
 import './App.css';
 import Records from './components/Records';
 import AddUser from './components/AddUser';

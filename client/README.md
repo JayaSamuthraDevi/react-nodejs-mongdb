@@ -1,1 +1,1 @@
-# react-nodejs-mongodb-fullstack
+# react-nodejs-mongodb
