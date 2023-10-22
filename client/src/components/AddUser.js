@@ -1,5 +1,5 @@
 import logo from "../images/divumlogo.png";
-import React,{ useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import formValidate from "../ValidateForm";
 import setError from "./setError";
@@ -14,6 +14,7 @@ function AddUser() {
   const [mobile_no, setMobile_no] = useState("");
   const [dob, setDob] = useState("");
   const [address, setAddress] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 
@@ -21,7 +22,7 @@ function AddUser() {
     e.preventDefault();
 
     if (valid()) {
-      let result = await fetch("http://localhost:3002/getUsers", {
+      let result = await fetch("http://localhost:5000/getUsers", {
         method: "post",
         body: JSON.stringify({
           email,
@@ -30,6 +31,7 @@ function AddUser() {
           mobile_no,
           dob,
           address,
+          password,
         }),
         headers: {
           "Content-Type": "application/json",
@@ -37,10 +39,15 @@ function AddUser() {
       });
 
       try {
-        // const jsonData = JSON.parse(result);
         result = await result.json();
-        console.warn(result);
-        if (result) {
+        const oldUser = result.emailExists;
+
+        if (oldUser == "true") {
+          e.preventDefault();
+
+          let field = document.getElementById("email");
+          setError(field, "*Email address already exists");
+        } else if (result) {
           alert("Data saved succesfully");
           setEmail("");
           setFirstname("");
@@ -48,12 +55,11 @@ function AddUser() {
           setMobile_no("");
           setDob("");
           setAddress("");
+          setPassword("");
+          navigate("/login");
         }
-        navigate("/getUsers");
       } catch (error) {
-        let field = document.getElementById("email");
-        setError(field, "*Email address already exists");
-        console.log(error, result);
+        console.log(error);
       }
     }
     return true;
@@ -102,25 +108,6 @@ function AddUser() {
                   <div className="errormsg"></div>
                 </div>
               </div>
-            </div>
-            <div className="row100">
-              <div className="col">
-                <div className="inputBox">
-                  <input
-                    type="text"
-                    value={email}
-                    id="email"
-                    name="email"
-                    data-testid="input-email"
-                    onChange={(e) => setEmail(e.target.value)}
-                    onBlur={(e) => formValidate(e.target.id)}
-                    autoComplete="off"
-                  />
-                  <span className="text">Email</span>
-                  <span className="line"></span>
-                  <div className="errormsg"></div>
-                </div>
-              </div>
               <div className="col">
                 <div className="inputBox">
                   <input
@@ -141,6 +128,45 @@ function AddUser() {
                     className="errormsg"
                     style={{ position: "relative", top: "2px" }}
                   ></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row100">
+              <div className="col">
+                <div className="inputBox">
+                  <input
+                    type="text"
+                    value={email}
+                    id="email"
+                    name="email"
+                    data-testid="input-email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    onBlur={(e) => formValidate(e.target.id)}
+                    autoComplete="off"
+                  />
+                  <span className="text">Email</span>
+                  <span className="line"></span>
+                  <div className="errormsg"></div>
+                </div>
+              </div>
+
+              <div className="col">
+                <div className="inputBox">
+                  <input
+                    type="password"
+                    value={password}
+                    id="password"
+                    name="password"
+                    data-testid="input-dob"
+                    onChange={(e) => setPassword(e.target.value)}
+                    onBlur={(e) => formValidate(e.target.id)}
+                    autoComplete="off"
+                  />
+
+                  <span className="text">Password</span>
+                  <span className="line"></span>
+                  <div className="errormsg"></div>
                 </div>
               </div>
               <div className="col">
@@ -189,13 +215,18 @@ function AddUser() {
 
             <div className="row100">
               <div className="col">
-                <Link to="/getUsers">
+                <Link to="/login">
                   <input
                     type="submit"
                     value="Submit"
                     onClick={handleOnSubmit}
                   />
                 </Link>
+              </div>
+            </div>
+            <div className="row100">
+              <div className="col">
+                <Link to="/login">Already Have an Account Sign Up Now</Link>
               </div>
             </div>
           </form>

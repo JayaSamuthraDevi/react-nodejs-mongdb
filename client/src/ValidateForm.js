@@ -88,6 +88,20 @@ const formValidate = async (id) => {
         }
         
         break;
+        case 'password':
+          if (field.value === '') {
+            setError(field, '*Password is required')
+          }
+          else if (field.value.length < 4  ||  field.value.length > 8 ) {
+            setError(field, '*Password should contain only 4 digits')
+            
+          }
+          else {
+            setSuccess(field)
+           
+          }
+          
+          break;
 
       default:
         alert("error");

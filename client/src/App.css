@@ -52,6 +52,7 @@ section {
   overflow: hidden;
   backdrop-filter: blur(2px);
 }
+
 .container::before {
   content: "";
   position: absolute;
@@ -63,13 +64,7 @@ section {
   pointer-events: none;
   transform: skewX(-55deg);
 }
-.container h2 {
-  width: 100%;
-  text-align: center;
-  color: #fff;
-  font-size: 36px;
-  margin-bottom: 20px;
-}
+
 .container .row100 {
   position: relative;
   width: 100%;
@@ -261,16 +256,46 @@ td {
   padding: 2px;
 }
 
-.addbtn {
+.customBtn {
+  width: 80px;
+  position: absolute;
+  right: -679px;
+  height: 60px;
+  border-radius: 35px 5px;
+  box-shadow: none;
+  border: #1b2477 solid;
+  top: 775px;
+  background-color: #fff;
+}
+.customBtn:hover{
+  width: 82px;
+  height: 64px;
+  border-radius: 35px 10px;
+  box-shadow: none;  
+  border: #5767f7 solid;
+  background-color: #fff;
+  font-weight: 600;
+
+}
+.logoutBtn {
   width: 80px;
   position: relative;
   right: -680px;
   height: 60px;
-  border-radius: 30px;
+  border-radius: 35px 5px ;
   box-shadow: none;
   border: #1b2477 solid;
   top: -45px;
   background-color: #fff;
+}
+.logoutBtn:hover {
+  width: 82px;
+  height: 65px;
+  border-radius: 35px 5px;
+  box-shadow:inset;
+  border: #fa1717 solid;
+  background-color: #fff;
+  font-weight: 600;
 }
 
 .inputBox input:-webkit-autofill,
@@ -281,5 +306,30 @@ td {
   -webkit-text-fill-color: #31b0dd;
   background-color: #000; 
  
+}
+
+a {
+color:rgb(184, 136, 136);
+font-size: 17px;
+
+}
+
+a:hover{
+  color: #fff8f8;
+  font-size: 18px;
+}
+.center-tag{
+  width: 100%;
+  text-align: center;
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+.center-tag-a{
+  
+  text-align: center;
+  color: #fff;
+  font-size: 17px;
+  margin-bottom: 20px;
 }
 

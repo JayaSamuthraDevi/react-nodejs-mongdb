@@ -1,38 +1,43 @@
-import React from 'react';
-import ReactDOM from 'react-dom'
-import './App.css';
-import Records from './components/Records';
-import AddUser from './components/AddUser';
-import UpdateUser from './components/UpdateUser';
+import React from "react";
+import "./App.css";
+import "./login.css";
 
-import {  createBrowserRouter ,RouterProvider} from 'react-router-dom';
+import Records from "./components/Records";
+import AddUser from "./components/AddUser";
+import UpdateUser from "./components/UpdateUser";
+import Login from "./components/Login";
+// import Logout from './components/Logout';
+
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {
   const router = createBrowserRouter([
     {
-      path:"/",
-      element:(<AddUser/>
-      ),
-    },
-    {  
-      path:"/getUsers",
-      element:(<Records/>
-      ),
+      path: "/",
+      element: <AddUser />,
     },
     {
-      path:"/updateUser/:id",
-      element:(<UpdateUser />
-      ),
+      path: "/getUsers",
+      element: <Records />,
     },
-    
+    {
+      path: "/updateUser/:id",
+      element: <UpdateUser />,
+    },
+    {
+      path: "/login",
+      element: <Login />,
+    },
+    // {
+    //   path:"/logout",
+    //   element:(<Logout />
+    //   ),
+    // },
   ]);
-    
- 
 
-  return (
-    < RouterProvider router={router} />
-   
-  );
+  return <RouterProvider router={router} />  
+  
+
 }
 
 export default App;

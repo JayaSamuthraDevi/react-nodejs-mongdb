@@ -34,6 +34,11 @@ var UserSchema =new Schema({
 		required: true,
 		
 	},
+	password: {
+		type: String,
+		required: true,
+		
+	},
 	timestamp:{
 		type:Date,
 		default:Date.now,

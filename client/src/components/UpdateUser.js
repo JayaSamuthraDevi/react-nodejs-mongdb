@@ -19,7 +19,7 @@ function UpdateUser() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3002/getUsers/" + id)
+      .get("http://localhost:5000/getUsers/" + id)
       .then((result) => {
         console.log(result);
         setEmail(result.data.email);
@@ -36,7 +36,7 @@ function UpdateUser() {
     e.preventDefault();
 
     if (valid()) {
-      let result = await fetch("http://localhost:3002/updateUser/" + id, {
+      let result = await fetch("http://localhost:5000/updateUser/" + id, {
         method: "PUT",
         body: JSON.stringify({
           email,
